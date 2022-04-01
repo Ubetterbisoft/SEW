@@ -12,22 +12,85 @@ public class Test {
 
         ErweitertesProdukt zuhauseTest = new ErweitertesProdukt(2345L,"/","/",20,0);
         zuhauseTest.setRabatt(25);
-        System.out.println(stift.produktDaten());
+        System.out.println(stift.toString());
         System.out.println(stift.gesamtPreis(5));
         //System.out.println(stift2.produktDaten());
 
         System.out.println("Test zuhause-------------------------------\n");
         System.out.println(zuhauseTest.gesamtPreis(1));
         Bewertung zuHauseBewertung = new Bewertung(69,"Bestes produkt");
-
+        zuhauseTest.neueBewertung(zuHauseBewertung);
         /**
          * Stehengeblieben bei Bewertungsarray erstellen
          * Der fehler ist, dass das Bewertungsarray null ist, deswegen muss man es befüllen
          */
         Bewertung bewertung = new Bewertung(3.0,"Das Produkt ist mittelmäsig");
-        
+        Bewertung bewertung2 = new Bewertung(10.0,"Das Produkt ist Grandios");
+
+        zuhauseTest.neueBewertung(bewertung2);
         System.out.println("\n" + zuhauseTest.neueBewertung(bewertung));
-        System.out.println(zuhauseTest.getBewertung());
-        System.out.println(zuhauseTest.bewertungenToString());
-    }
+        
+     
+
+        System.out.println("Schule test ----------------------------------------\n");
+        
+        System.out.println(zuhauseTest.durchschnittsbewertung()+"\n");
+        System.out.println(zuhauseTest.toString()+"\n");
+
+        //printen von stift2
+        stift2.neueBewertung(bewertung);
+        stift2.neueBewertung(bewertung2);
+        System.out.println(stift2.toString());
+
+        System.out.println("Testen Der Klasse (Schritt 3)------------------------------------\n");
+
+        Produkt p1 = new Produkt(9876543210L, "Mappe rot", "eine dünne rote Mappe", 2.49);
+        System.out.println("Produkt: " + p1);
+        Produkt p2 = new Produkt(9876543210L, "Mappe rot", "eine dünne rote Mappe", 2.49);
+        System.out.println("Vergleich: " + p1.equals(p2));
+        //man soll zwei gleiche objekte erstellen, sie ausgeben undvergleichen
+        //Es werden zwei Objekte mit den gleichen Attributen erstellt, es werden die
+        //Referenzen vergleichen und Ausgegeben, nicht der Inhalt
+        System.out.println();
+
+        //testen von Erweitertes Produkt
+        ErweitertesProdukt stift3 = new ErweitertesProdukt(24123532L, "Ein Schwarzer Stift ", "dieser Stift ist sehr robust und qualitativ hovhwertig," ,5, 50);
+        ErweitertesProdukt stift4 = new ErweitertesProdukt(24123532L, "Ein Schwarzer Stift ", "dieser Stift ist sehr robust und qualitativ hovhwertig," ,5, 50);
+        
+        System.out.println("stift3: "+ stift3);
+        System.out.println("Vergleich: "+ stift3.equals(p2));
+
+        //testen von Bewertung
+
+        System.out.println();
+
+        Bewertung bewertungTest = new Bewertung(3.0,"Das Produkt ist mittelmäsig");
+        Bewertung bewertungTest2 = new Bewertung(3.0,"Das Produkt ist mittelmäsig");
+
+        Bewertung bewertungTest3 = new Bewertung(4.0,"Das Produkt ist mittelmäsig");
+
+        System.out.println("Bewertung: "+ bewertungTest);
+        System.out.println("Vergleich: "+ bewertungTest.equals(bewertungTest2));
+
+        /**
+         * Stehengeblieben bei Schritt 3 Methoden der Klasse Object überschreiben bzw. überladen
+         */
+        System.out.println(stift.toString());
+        System.out.println("Equanls vergleich False: " + bewertungTest.equals(bewertungTest3) );
+        System.out.println("Equanls vergleich true: " + bewertungTest.equals(bewertungTest) +"\n" );
+        
+        Produkt obj = new Produkt();
+        Produkt obj2 = new Produkt(324523L, "Bezeichnung", "Beschreibung", 23);
+        System.out.println(" Produkt Equals False: "+obj.equals(obj2));
+        System.out.println(" Produkt Equals False: "+obj.equals(obj));
+
+        ErweitertesProdukt e = new ErweitertesProdukt();
+        ErweitertesProdukt e1 = new ErweitertesProdukt(2342L, "Dejan", "beschreibung", 45, 45);
+    
+        ErweitertesProdukt e2 = new ErweitertesProdukt(2342L, "Dejan", "beschreibung", 45, 45);
+        
+        System.out.println("Erweitertest produkt vergleich False: " + e.equals(e1));
+        
+        System.out.println("Erweitertes produkt vergleich true: "+ e1.equals(e2));
+    }   
 }
