@@ -79,34 +79,27 @@ public class ErweitertesProdukt extends Produkt{
         //Es gibt kein Platz im Array also wird erweitert
         int erweiterung = this.bewertung.length +1;
         Bewertung[] bewertung2 = new Bewertung[erweiterung];
-        bewertung2 = this.bewertung;
+        for(int i = 0; i< this.bewertung.length; i++){
+            bewertung2[i] = this.bewertung[i];
+        }
+     
 
         //Das neue Objekt wird in den erstmöglichen platz gegeben
         for(int i = 0; i < bewertung2.length; i++){
             if(bewertung2[i] == null){
                 bewertung2[i] = bewertung;
+                this.bewertung = bewertung2;
                 return true;
             } 
         }
         return false;
     }
-    public String bewertungenToString(){
-        if(this.bewertung == null)
-            return "Keine bewertung vorhanden";
-        String Ausgabe = "";
-        for(int i = 0; i < this.bewertung.length; i++){
-            if(this.bewertung[i] != null){
-                Ausgabe +=  " "+ this.bewertung[i] +" ";
-            }else{
-                Ausgabe += " / ";
-            }
+    
 
-        }
-        return Ausgabe;
-    }
-
-    /** 
+    
     public double durchschnittsbewertung(){
+        if(bewertung == null)
+            return 0.0;
         double rechnung = 0.0;
         int division = 0;
         
@@ -114,18 +107,73 @@ public class ErweitertesProdukt extends Produkt{
             if(this.bewertung[i] != null){
                 rechnung = rechnung + this.bewertung[i].getBewertung();
                 division++;
+                continue;
             }
         }
         return rechnung / division;
     }
-    */
-    //nicht fertig
-    /** 
-    public String produktDaten(){
-        Bewertung bewertung = new Bewertung();
-        return super.produktDaten() + "( " + ermaessigterPreis() + " Euro mit " + getRabatt() + "% Ermäsigung) -" + "Wertung: "+ durchschnittsbewertung() + " (" + bewertung +"),";
+    
+    
+    @Override
+    public String toString(){
+        if(this.bewertung == null)
+            return " / ";
+        String bewertung = this.bewertung[0].toString();
+        for(int i = 1; i <this.bewertung.length; i++){
+            bewertung += "; " + this.bewertung[i].toString();
+        }
+        return super.toString() + "( " + ermaessigterPreis() + " Euro mit " + getRabatt() + "% Ermäsigung) -" + "Wertung: "+ durchschnittsbewertung() + " (" +bewertung +")";
     }
-    */
+
+    public boolean equals(ErweitertesProdukt e){
+        //Wenn der Rabatt gleich ist und die Bewertung auch dann wird true zurück gegeben
+        if(this.rabatt == e.getRabatt() && (this.bewertung == null && e.getBewertung() == null))
+            return true;
+        /**
+         * Überpüft alle möglichen zustände wo die objekte nicht gleich sein könnten und mindestens einer
+         * der Bewertungs Arrays null sein könnte, Dass schließt den Fall einr Nullpointer Exception 
+         * beim vergleich des Inhalts der Bewertungsarrays aus.
+         * Zuerst wenn der rabatt gleich ist aber die Bewertungen nicht (2 Mal)
+         * Danach wenn der Rabatt ungleich und genau das gleiche wie vorher und so weiter.......
+         */
+        if((this.rabatt == e.getRabatt() && (this.bewertung == null && e.getBewertung() != null))||
+            this.rabatt == e.getRabatt() && (this.bewertung != null && e.getBewertung() == null) ||
+            this.rabatt != e.getRabatt() && (this.bewertung == null && e.getBewertung() == null)||
+            this.rabatt != e.getRabatt() && (this.bewertung == null && e.getBewertung() != null)||
+            this.rabatt != e.getRabatt() && (this.bewertung != null && e.getBewertung() == null)){
+                return false;
+        }
+
+        //Wenn rabatt gleich ist wird der inhalt des Arrays der nicht merh null sien kann übeprüft
+        if(this.rabatt == e.getRabatt()){
+            
+            
+            for(int i = 0; i < this.bewertung.length; i++){
+                if(this.bewertung[i] != e.bewertung[i]){
+                    return false;
+                }
+                
+            }
+            return true;
+            
+        }
+        return true;
+    }
+
+    @Override
+    /** 
+     * public int hashCode(){
+        int hashCode =  (int) this.rabatt;
+        for(int i = 0; i < bewertung.length;i++){
+            if(bewertung[i] != null){
+                int temp = (int)  bewertung[i].getBewertung();
+                hashCode = hashCode + temp.hashCode();
+            }
+        }
+        
+        return hashCode;
+    }*/ 
+    
 
 
     
