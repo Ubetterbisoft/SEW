@@ -59,7 +59,14 @@ public class Produkt{
     /**
      * Gibt die Produktdaten im verlangen Format aus
      */
-    public String produktDaten(){
+    @Override
+    public String toString(){
         return this.produktID + " - " + this.Bezeichnung + ": " + this.Beschreibung +" - " + this.preis + " Euro";
+    }
+    public boolean equals(Produkt p){
+        if(this.produktID == p.getProduktID() && this.Bezeichnung.equals(p.getBezeichnung()) && this.Beschreibung.equals(p.getBeschreibung()) && this.preis == p.getPreis() ){
+            return true;
+        }
+        return false;
     }
 }
