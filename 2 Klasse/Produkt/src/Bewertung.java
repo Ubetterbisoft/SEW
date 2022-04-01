@@ -25,7 +25,22 @@ public class Bewertung {
         return Text;
     }
 
-    public String bewertungDaten(){
-        return "Bewertung: " + this.bewertung + "\nText: " + this.Text;
+    @Override
+    public String toString(){
+        return "Bewertung: " + this.bewertung + " Text: " + this.Text;
+    }
+
+    public boolean equals(Bewertung b){
+        if(this.bewertung == b.getBewertung() && this.Text.equals(b.getText())){
+            return true;   
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        int hashCode =  (int) this.bewertung + this.Text.hashCode();
+        return hashCode;
     }
 }
