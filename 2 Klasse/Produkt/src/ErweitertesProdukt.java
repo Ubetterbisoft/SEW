@@ -161,18 +161,14 @@ public class ErweitertesProdukt extends Produkt{
     }
 
     @Override
-    /** 
-     * public int hashCode(){
+    public int hashCode(){
         int hashCode =  (int) this.rabatt;
-        for(int i = 0; i < bewertung.length;i++){
-            if(bewertung[i] != null){
-                int temp = (int)  bewertung[i].getBewertung();
-                hashCode = hashCode + temp.hashCode();
-            }
+        int hashCode2 =0;
+        if(bewertung != null){
+            hashCode2 = (int) this.bewertung.hashCode();
         }
-        
-        return hashCode;
-    }*/ 
+        return hashCode + hashCode2 + super.hashCode();
+    } 
     
 
 

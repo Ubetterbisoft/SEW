@@ -15,7 +15,10 @@ public class Produkt{
         this.preis = preis;
     }
     public void setBeschreibung(String beschreibung) {
-        Beschreibung = beschreibung;
+        if(beschreibung!=null)
+            Beschreibung = beschreibung;
+        else
+            Beschreibung=" / ";
     }
     public String getBeschreibung() {
         return Beschreibung;
@@ -34,16 +37,14 @@ public class Produkt{
     }
     //Alle Atribute werden auf 0 gesetzt
     public Produkt(){
-        this.produktID = 0;
-        this.Beschreibung = " / ";
-        this.Bezeichnung = " / ";
-        this.preis = 0;
+        this(0," / ",null,0);
+
     }
     //Alle Attribute werden auf den parameterwert gesetzt
     public Produkt(long produktID, String Bezeichnung,String Beschreibung, double preis){
         this.produktID = produktID;
         this.Bezeichnung = Bezeichnung;
-        this.Beschreibung = Beschreibung;
+        this.setBeschreibung(Beschreibung);
         this.preis = preis;
     }
     /**
@@ -68,5 +69,14 @@ public class Produkt{
             return true;
         }
         return false;
+    }
+    @Override
+    public int hashCode(){
+        int bezeichnung = this.Bezeichnung.hashCode();
+        int beschreibung = this.Beschreibung.hashCode();
+        int preis = (int) Math.round(this.preis);
+        int produktId = (int) this.produktID;
+
+        return bezeichnung + beschreibung + preis + produktId;
     }
 }

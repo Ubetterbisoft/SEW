@@ -92,5 +92,23 @@ public class Test {
         System.out.println("Erweitertest produkt vergleich False: " + e.equals(e1));
         
         System.out.println("Erweitertes produkt vergleich true: "+ e1.equals(e2));
+        //Es werden alle hashcodes von allen erstellten objekten ausgegeben. Alle attribute werden miteinander addiert und ausgegeben
+
+        System.out.println("Hashcodes --------------------------------------------------------");
+        System.out.println("Klasse: Produkt, Name: Stift: " + stift.hashCode());
+        System.out.println("Klasse: ErweitertesProdukt, Name: Stift2: " + stift2.hashCode());
+        System.out.println("Klasse: ErweitertesProdukt, Name: zuhauseTest: " + zuhauseTest.hashCode());
+        System.out.println("Klasse: Bewertung, Name: zuhauseBewertung: " + zuHauseBewertung.hashCode());
+        System.out.println("Klasse: Bewertung, Name: bewertung: " + bewertung.hashCode());
+        System.out.println("Klasse: Bewertung, Name: bewertung2: " + bewertung2.hashCode());
+        System.out.println("Klasse: ErweitertesProdukt, Name: Stift3: " + stift3.hashCode());
+        System.out.println("Klasse: ErweitertesProdukt, Name: Stift4: " + stift4.hashCode());
+        System.out.println("Klasse: Bewertung, Name: bewertungTest " + bewertungTest.hashCode());
+        System.out.println("Klasse: Bewertung, Name: bewertungTest2: " + bewertungTest2.hashCode());
+        System.out.println("Klasse: Bewertung, Name: bewertungTest3: " + bewertungTest3.hashCode());
+        System.out.println("Klasse: ErweitertesProdukt, Name: e: " + e.hashCode());
+        System.out.println("Klasse: ErweitertesProdukt, Name: e1: " + e1.hashCode());
+        System.out.println("Klasse: ErweitertesProdukt, Name: e2: " + e2.hashCode());
+
     }   
 }
