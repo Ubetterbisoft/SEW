@@ -3,8 +3,8 @@ public class ErweitertesProdukt extends Produkt{
     private Bewertung[] bewertung;
     
     public ErweitertesProdukt(long produktID, String bezeichnung, String beschreibung, int preis, double rabatt) throws NumericRangeException {
-        if((produktID < 999999L)
-        ||bezeichnung == null||beschreibung == null || preis < 0.0 || rabatt < 0 || rabatt >100){
+        if(((produktID < 1000000L)
+        ||bezeichnung == null|| beschreibung == null || preis < 0.0 ||  rabatt < 0 || rabatt >100)){
             throw new NumericRangeException();
         }
         this.setPreis(preis);
@@ -15,23 +15,32 @@ public class ErweitertesProdukt extends Produkt{
 
     }
     public ErweitertesProdukt() throws NumericRangeException{
-        this(1000000, "bezeichnung", "beschreibung", 1, 25);
+        this(1000000L, "bezeichnung", "beschreibung", 1, 25);
 
     }
     
-    public void setRabatt(double rabatt) {
+    public void setRabatt(double rabatt) throws NumericRangeException {
         if(rabatt <= 100 && rabatt >= 0){
             this.rabatt = rabatt;
-        }    
+        }else{
+            throw new NumericRangeException("Der Rabattwert mus zwischen 0 - 100 sein");
+        }
             
     }
-    public void setBewertung(Bewertung bewertung) {
-        for(int i = 0; i < this.bewertung.length; i++){
-            if(this.bewertung[i] == null){
-                this.bewertung[i] = bewertung;
-                
-            } 
+    public void setBewertung(Bewertung bewertung1)  throws IllegalArgumentException, NumericRangeException{
+        if(bewertung1 == null){
+            throw new IllegalArgumentException("Das Bewertungsobjekt darf nich null sein");
         }
+        if(bewertung == null){
+            throw new NumericRangeException("Der Bewertungsarray ");
+        }
+            for(int i = 0; i < this.bewertung.length; i++){
+                if(this.bewertung[i] == null){
+                    this.bewertung[i] = bewertung1;
+                
+                } 
+            }
+        
     }
     public Bewertung[] getBewertung() {
         return bewertung;
@@ -47,15 +56,18 @@ public class ErweitertesProdukt extends Produkt{
         return super.getPreis() - minus; 
     }
 
-    public double gesamtPreis(int anzahl){
+    public double gesamtPreis(int anzahl) throws NumericRangeException{
         //ermässigter Preis von allen Produkten zusammen
-        double gesamtPreis = super.gesamtPreis(anzahl);
-        double minus = gesamtPreis * rabatt / 100;
-        return gesamtPreis - minus;
+            double gesamtPreis = super.gesamtPreis(anzahl);
+            double minus = gesamtPreis * rabatt / 100;
+            return gesamtPreis - minus;
 
     }
 
-    public boolean neueBewertung(Bewertung bewertung){
+    public boolean neueBewertung(Bewertung bewertung) throws IllegalArgumentException{
+        if(bewertung == null){
+            throw new IllegalArgumentException("Das Bewertungsobjekt kann nicht null sein");
+        }
         if(this.bewertung == null){
             this.bewertung = new Bewertung[1];
             this.bewertung[0] = bewertung;
@@ -118,40 +130,33 @@ public class ErweitertesProdukt extends Produkt{
         return super.toString() + "( " + ermaessigterPreis() + " Euro mit " + getRabatt() + "% Ermäsigung) -" + "Wertung: "+ durchschnittsbewertung() + " (" +bewertung +")";
     }
 
-    public boolean equals(ErweitertesProdukt e){
-        //Wenn der Rabatt gleich ist und die Bewertung auch dann wird true zurück gegeben
-        if(this.rabatt == e.getRabatt() && (this.bewertung == null && e.getBewertung() == null))
-            return true;
-        /**
-         * Überpüft alle möglichen zustände wo die objekte nicht gleich sein könnten und mindestens einer
-         * der Bewertungs Arrays null sein könnte, Dass schließt den Fall einr Nullpointer Exception 
-         * beim vergleich des Inhalts der Bewertungsarrays aus.
-         * Zuerst wenn der rabatt gleich ist aber die Bewertungen nicht (2 Mal)
-         * Danach wenn der Rabatt ungleich und genau das gleiche wie vorher und so weiter.......
-         */
-        if((this.rabatt == e.getRabatt() && (this.bewertung == null && e.getBewertung() != null))||
-            this.rabatt == e.getRabatt() && (this.bewertung != null && e.getBewertung() == null) ||
-            this.rabatt != e.getRabatt() && (this.bewertung == null && e.getBewertung() == null)||
-            this.rabatt != e.getRabatt() && (this.bewertung == null && e.getBewertung() != null)||
-            this.rabatt != e.getRabatt() && (this.bewertung != null && e.getBewertung() == null)){
-                return false;
-        }
-
-        //Wenn rabatt gleich ist wird der inhalt des Arrays der nicht merh null sien kann übeprüft
-        if(this.rabatt == e.getRabatt()){
-            
-            
-            for(int i = 0; i < this.bewertung.length; i++){
-                if(this.bewertung[i] != e.bewertung[i]){
-                    return false;
-                }
-                
-            }
-            return true;
-            
-        }
-        return true;
-    }
+    public boolean equals(ErweitertesProdukt p)throws IllegalArgumentException{
+        if(p == null) {
+		    throw new IllegalArgumentException("Das erweiterte Produkt soll nicht null sein");
+		}
+        /*
+		 * 1.Schritt wir schauen ob die Referenz gleich ist
+		 * Falls ja ist es exact dasselbe Produkt
+		 */
+		if(this == p) {
+			return true;
+		}
+		
+		
+		
+		/*
+		 * 2.Schritt	 wir vergleichen ob die Klassen gleich sind
+		 * Falls die Klassen nicht gleich sind kann man direkt false zurückgeben
+		 * dies hat den Grund, weil die Atribute dann anders sind und nicht verglichen werden können
+		 */
+		if(getClass() != p.getClass()) {
+			return false;
+		}
+		
+		
+		return (super.getBeschreibung() == p.getBeschreibung()) && (super.getBezeichnung() == p.getBezeichnung()) && (super.getPreis() == p.getPreis()) && (super.getProduktID() == p.getProduktID()) && (this.rabatt == p.rabatt);
+	}
+    
 
     @Override
     public int hashCode(){

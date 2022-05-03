@@ -11,27 +11,44 @@ public class Produkt{
     public double getPreis() {
         return preis;
     }
-    public void setPreis(double preis) {
-        this.preis = preis;
+    public void setPreis(double preis) throws NumericRangeException{
+        if(preis >= 0.0){
+            this.preis = preis;
+        }else{
+            throw new NumericRangeException("Ein Preis kann nicht negativ sein");
+        }
     }
-    public void setBeschreibung(String beschreibung) {
-        if(beschreibung!=null)
-            Beschreibung = beschreibung;
-        else
-            Beschreibung=" / ";
+    public void setBeschreibung(String beschreibung) throws IllegalArgumentException {
+        if(beschreibung!=null){
+            this.Beschreibung = beschreibung;
+        }else{
+            throw new IllegalArgumentException("Die Beschreibung darf nicht null sein");
+        }
+            
     }
     public String getBeschreibung() {
         return Beschreibung;
     }
-    public void setBezeichnung(String bezeichnung) {
-        Bezeichnung = bezeichnung;
+    public void setBezeichnung(String bezeichnung) throws IllegalArgumentException {
+        if(bezeichnung!=null && bezeichnung.length() > 1 && bezeichnung != "  "){
+            this.Beschreibung = bezeichnung;
+        }else{
+            throw new IllegalArgumentException("Die Beschreibung muss mindestens zwei valide Zeichen beinhalten");
+        }
     }
     public String getBezeichnung() {
         return Bezeichnung;
     }
-    public void setProduktID(long produktID) {
-        this.produktID = produktID;
+    
+    public void setProduktID(long produktID) throws NumericRangeException {
+        if(produktID < 1000000L){
+            throw new NumericRangeException("Die ProduktID muss mindestens 7 Stellen aufseisen");
+            
+        }else{
+            this.produktID = produktID;
+        }
     }
+    
     public long getProduktID() {
         return produktID;
     }
@@ -42,7 +59,7 @@ public class Produkt{
     }
     //Alle Attribute werden auf den parameterwert gesetzt
     public Produkt(long produktID, String Bezeichnung,String Beschreibung, double preis) throws NumericRangeException{
-        if((produktID < 999999L)
+        if((produktID < 1000000L)
         ||Bezeichnung == null||Beschreibung == null || preis < 0.0){
             throw new NumericRangeException();
         }
@@ -56,10 +73,13 @@ public class Produkt{
      * mit der Stückanzahl multipliziert
      * @param stuekZahl ist die Stückanzahl
      */
-    public double gesamtPreis(int stuekZahl){
-        double anzahlConverted = (double) stuekZahl; 
-        return this.preis * anzahlConverted;
-        
+    public double gesamtPreis(int stuekZahl) throws NumericRangeException{
+        if(stuekZahl >= 0){
+            double anzahlConverted = (double) stuekZahl; 
+            return this.preis * anzahlConverted;
+        }else{
+            throw new NumericRangeException("Die Stückanzahl muss >= 0 sein");
+        }
     }
     /**
      * Gibt die Produktdaten im verlangen Format aus
@@ -68,11 +88,15 @@ public class Produkt{
     public String toString(){
         return this.produktID + " - " + this.Bezeichnung + ": " + this.Beschreibung +" - " + this.preis + " Euro";
     }
-    public boolean equals(Produkt p){
-        if(this.produktID == p.getProduktID() && this.Bezeichnung.equals(p.getBezeichnung()) && this.Beschreibung.equals(p.getBeschreibung()) && this.preis == p.getPreis() ){
-            return true;
-        }
-        return false;
+    public boolean equals(Produkt p) throws IllegalArgumentException{
+        if(p != null){
+            if(this.produktID == p.getProduktID() && this.Bezeichnung.equals(p.getBezeichnung()) && this.Beschreibung.equals(p.getBeschreibung()) && this.preis == p.getPreis() ){
+                return true;
+            }
+            return false;
+        }else{
+            throw new IllegalArgumentException("Das Produkt objekt darf nich null sein")
+;        }
     }
     @Override
     public int hashCode(){
