@@ -124,49 +124,46 @@ public class ErweitertesProdukt extends Produkt{
         }
         return super.toString() + "( " + ermaessigterPreis() + " Euro mit " + getRabatt() + "% Ermäsigung) -" + "Wertung: "+ durchschnittsbewertung() + " (" +bewertung +")";
     }
-
-    public boolean equals(ErweitertesProdukt e){
-        //Wenn der Rabatt gleich ist und die Bewertung auch dann wird true zurück gegeben
-        if(this.rabatt == e.getRabatt() && (this.bewertung == null && e.getBewertung() == null))
-            return true;
-        /**
-         * Überpüft alle möglichen zustände wo die objekte nicht gleich sein könnten und mindestens einer
-         * der Bewertungs Arrays null sein könnte, Dass schließt den Fall einr Nullpointer Exception 
-         * beim vergleich des Inhalts der Bewertungsarrays aus.
-         * Zuerst wenn der rabatt gleich ist aber die Bewertungen nicht (2 Mal)
-         * Danach wenn der Rabatt ungleich und genau das gleiche wie vorher und so weiter.......
-         */
-        if((this.rabatt == e.getRabatt() && (this.bewertung == null && e.getBewertung() != null))||
-            this.rabatt == e.getRabatt() && (this.bewertung != null && e.getBewertung() == null) ||
-            this.rabatt != e.getRabatt() && (this.bewertung == null && e.getBewertung() == null)||
-            this.rabatt != e.getRabatt() && (this.bewertung == null && e.getBewertung() != null)||
-            this.rabatt != e.getRabatt() && (this.bewertung != null && e.getBewertung() == null)){
-                return false;
-        }
-
-        //Wenn rabatt gleich ist wird der inhalt des Arrays der nicht merh null sien kann übeprüft
-        if(this.rabatt == e.getRabatt()){
-            
-            
-            for(int i = 0; i < this.bewertung.length; i++){
-                if(this.bewertung[i] != e.bewertung[i]){
-                    return false;
-                }
-                
-            }
-            return true;
-            
-        }
-        return true;
-    }
-
+    @Override
+    public boolean equals(Object p){
+        //Es wird geschaut ob p einen inhalt zum vergleichen hat
+        if(p == null) {
+		    return false;
+		}
+        /*
+		 * 1.Schritt wir schauen ob die Referenz gleich ist
+		 * Falls ja ist es exact dasselbe Produkt
+		 */
+		if(this == p) {
+			return true;
+		}
+		
+		
+		
+		/*
+		 * 2.Schritt	 wir vergleichen ob die Klassen gleich sind
+		 * Falls die Klassen nicht gleich sind kann man direkt false zurückgeben
+		 * dies hat den Grund, weil die Atribute dann anders sind und nicht verglichen werden können
+		 */
+		if(getClass() != p.getClass()) {
+			return false;
+		}
+		
+        ErweitertesProdukt p1 = (ErweitertesProdukt) p;
+		//Alle attribute werden miteinander verglichen
+		return (super.getBeschreibung() == p1.getBeschreibung()) && (super.getBezeichnung() == p1.getBezeichnung()) && (super.getPreis() == p1.getPreis()) && (super.getProduktID() == p1.getProduktID()) && (this.rabatt == p1.rabatt);
+	}
     @Override
     public int hashCode(){
+        //Das rabbat attribut werd als in umgewandelt
         int hashCode =  (int) this.rabatt;
+        //Wird für den fall 0 gesetzt wenn bewertung null ist
         int hashCode2 =0;
         if(bewertung != null){
+            //Der Hashcode von bewertung wird der variable zugewiesen
             hashCode2 = (int) this.bewertung.hashCode();
         }
+        //alle hashwerte werden miteinander addiert und die haswerte von der geerbten methode werden aufgerufen
         return hashCode + hashCode2 + super.hashCode();
     } 
     

@@ -30,8 +30,23 @@ public class Bewertung {
         return "Bewertung: " + this.bewertung + " Text: " + this.Text;
     }
 
-    public boolean equals(Bewertung b){
-        if(this.bewertung == b.getBewertung() && this.Text.equals(b.getText())){
+    @Override
+    public boolean equals(Object b){
+        
+        //Es wird geschaut ob die Referenzen gleich sind, wenn ja dan ist es der inhalt gleich
+        if(this == b){
+            return true;
+        }
+        //Es wird geschaut ob das Objekt existiert
+        if(b == null){
+            return false;
+        }
+        //Es wird verglichen ob die Klassen gleich sind, wegen den attributen 8sie könnten unterschiedlich sein)
+        if(getClass() != b.getClass()){
+            return false;
+        }
+        Bewertung b1 = (Bewertung) b;
+        if(this.bewertung == b1.getBewertung() && this.Text.equals(b1.getText())){
             return true;   
         }
         return false;
@@ -39,7 +54,7 @@ public class Bewertung {
 
     @Override
     public int hashCode() {
-        // TODO Auto-generated method stub
+        //alle hashwerte werdnen
         int hashCode =  (int) this.bewertung + this.Text.hashCode();
         return hashCode;
     }

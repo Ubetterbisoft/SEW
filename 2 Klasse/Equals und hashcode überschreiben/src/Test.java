@@ -110,6 +110,19 @@ public class Test {
         System.out.println("Klasse: ErweitertesProdukt, Name: e: " + e.hashCode());
         System.out.println("Klasse: ErweitertesProdukt, Name: e1: " + e1.hashCode());
         System.out.println("Klasse: ErweitertesProdukt, Name: e2: " + e2.hashCode());
+        System.out.println("-----------------------------------------------------");
 
+        Produkt produkt1 = new Produkt(23453333423324L, "Ein Blauer Stift" , "Dieser Stift ist serh robust und qualitativ hochwertig" , 3);
+        Produkt produkt2 = new Produkt(2345324L, "Ein Blauer Stift" , "Dieser Stift ist serh robust und qualitativ hochwertig" , 3);
+        System.out.println(produkt1.equals(produkt2));
+
+        ErweitertesProdukt erw1 = new ErweitertesProdukt(24123532L, "Ein Schwarzer Stift ", "dieser Stift ist sehr robust und qualitativ hovhwertig," ,5, 50);
+        ErweitertesProdukt erw2 = new ErweitertesProdukt(24123532L, "Ein Schwarzer  ", "dieser Stift ist sehr robust und qualitativ hovhwertig," ,5, 50);
+
+        System.out.println(erw1.equals(erw2) + "\n" + erw1.hashCode());
+
+        Bewertung b1 = new Bewertung(4.4,"ee");
+        Bewertung b2 = new Bewertung(4.4,"ee");
+        System.out.println(b1.equals(b2));
     }   
 }

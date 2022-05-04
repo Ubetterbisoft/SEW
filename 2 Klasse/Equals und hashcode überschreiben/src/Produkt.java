@@ -71,12 +71,31 @@ public class Produkt{
         return false;
     }
     @Override
-    public int hashCode(){
-        int bezeichnung = this.Bezeichnung.hashCode();
-        int beschreibung = this.Beschreibung.hashCode();
-        int preis = (int) Math.round(this.preis);
-        int produktId = (int) this.produktID;
-
-        return bezeichnung + beschreibung + preis + produktId;
-    }
+	public int hashCode() {
+        //Es werden alle Attribue zusammengerechnet und als Int ausgegeben. für texte werden die standard hasCode() methode benutzt
+		double hash = this.preis + Bezeichnung.hashCode() + Beschreibung.hashCode() + this.produktID ;
+		return (int) hash;
+	}
+    @Override
+    public boolean equals(Object obj) {
+        //Es wird geschaut of der Inhalt des zweiten obj null ist.
+        //Wenn ja, dann soll false zurück gegeben werden.
+        if (obj == null) {
+          return false;
+        }
+        //Wenn die referenzen gleich sind ist auch der inhalt gleich
+        if (obj == this) {
+          return true;
+        }
+        //Ew wird geprüft ob es sich um zwei identische Klassen handelt
+        if (obj.getClass() == this.getClass()) {
+          //Das object wird in ein Produkt Objekt gecastet
+          Produkt b = (Produkt)obj;
+          //Die Attribute vom this werden mit denen des anderen objects verglichen
+          if (this.produktID == b.getProduktID() && this.Beschreibung.equals(b.getBeschreibung()) && this.Bezeichnung.equals(b.getBezeichnung()) && this.preis == b.getPreis() ) {
+            return true;
+          }
+        }
+        return false;
+      }
 }
