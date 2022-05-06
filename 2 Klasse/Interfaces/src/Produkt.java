@@ -1,4 +1,4 @@
-package drajic;
+
 /**
  * Die Klasse ist ein Object und enthält attribute und object methoden
  */

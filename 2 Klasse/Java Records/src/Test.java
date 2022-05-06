@@ -111,5 +111,29 @@ public class Test {
         System.out.println("Klasse: ErweitertesProdukt, Name: e1: " + e1.hashCode());
         System.out.println("Klasse: ErweitertesProdukt, Name: e2: " + e2.hashCode());
 
+        System.out.println("Test Records-------------------------------------------------");
+
+        //Testung vom cannonical constructor und toString methode
+        BewertungRecord record = new BewertungRecord(4.5,"Gut");
+        System.out.println(record.toString());
+
+        //Testung von only bewertung parameter
+        BewertungRecord record2 = new BewertungRecord(10);
+        System.out.println(record2.toString());
+
+        //Testung von der intWertung methode
+        System.out.println(record.intWertung());
+
+        //Testung von ausgabe der attribute seperat
+        System.out.println(record.bewertung() + "\n" + record.Text() );
+
+        //testung von negativen bewertung parameter
+        /** 
+        BewertungRecord record3 = new BewertungRecord(-5,"Gut");
+        System.out.println(record3.toString());
+        */
+
+        
+        
     }   
 }
