@@ -1,6 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Die Frame Klasse in der das Frame mit dem Label aufgerufen wird
+ */
 public class Frame extends JFrame{
     public Frame(){
         super("Dejan`s erste Java-Zeichnung");

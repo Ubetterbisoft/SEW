@@ -1,9 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
+
+/**
+ * Die Grafische Klasse in der alle formen gezeichnet werden und die Standartdeinstellungen durchgeführt werden
+ * @author Dejan Rajic
+ * @version 2022.05.06
+ *
+ */
 public class Grafik extends JLabel{
     public Grafik(){
+        //Label wird erstellt
         JLabel label = new JLabel();
+        //wird nicht durchsichtig gemacht
         label.setOpaque(true);
+
         label.setPreferredSize(new Dimension(700,600));
         this.add(label);
 
@@ -15,6 +25,8 @@ public class Grafik extends JLabel{
 
         int mitteX = super.getWidth()/2;
         int mitteY = super.getHeight()/2;
+
+        //Von der Mitte des Fensters ausgehend werden alle Geometrischen Objekte Gezeichnet
 
         //Linker Kreisturm
         g.drawArc(mitteX -150,mitteY -65, 40,40,0,360);
