@@ -45,8 +45,13 @@ public class Panel extends JPanel {
 
         //Hizufügen der Panels in das Main Grid Layout
 
+        //Es müssen vorers alle Komponenten eingetragen sein damit das richtige Layout dargestellt wird
         this.add(border);
         this.add(flow);
+        this.add(test);
+        this.add(test1);
+        this.add(test2);
+        this.add(test3);
 
         /**
         this.add(test);
