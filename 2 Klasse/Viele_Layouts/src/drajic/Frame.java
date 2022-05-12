@@ -1,6 +1,12 @@
 package drajic;
 import javax.swing.*;
 import java.awt.*;
+/**
+ * Das Frame wird erstellt, BAsisfunktionen und aus sichtbar gesetzt
+ * Das Frame() wird in main aufgerufen
+ * @author draji
+ * @version 2022.05.12
+ */
 public class Frame extends JFrame {
 
     public static void main(String[] args){
@@ -14,7 +20,7 @@ public class Frame extends JFrame {
 
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(500,500));
+        this.setPreferredSize(new Dimension(600,600));
 
 
         this.pack();
