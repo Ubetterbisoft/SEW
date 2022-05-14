@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="22f93260-b5ac-4115-aa02-dd01c9c7725f" name="Changes" comment="" />
+    <list default="true" id="22f93260-b5ac-4115-aa02-dd01c9c7725f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.idea/Selbst_erstellte_Grafik.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/out/production/Selbst_erstellte_Grafik/Frame.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/out/production/Selbst_erstellte_Grafik/Frame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/out/production/Selbst_erstellte_Grafik/Grafik.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/out/production/Selbst_erstellte_Grafik/Grafik.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/src/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Selbst_erstellte_Grafik/src/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik2/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Selbst_erstellte_Grafik2/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Viele_Layouts/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Viele_Layouts/Viele_Layouts.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Viele_Layouts/out/production/Viele_Layouts/drajic/Frame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Viele_Layouts/out/production/Viele_Layouts/drajic/Panel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Viele_Layouts/src/drajic/Frame.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Viele_Layouts/src/drajic/Panel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../bin/Kegel.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,16 +46,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/draji/Desktop/Github/SEW/2 Klasse/Angepasste_Muster",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/draji/Desktop/Github/SEW/2 Klasse/Angepasste_Muster&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.drajic.Gui">
     <configuration name="Gui (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Gui" />

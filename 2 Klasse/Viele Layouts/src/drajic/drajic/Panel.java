@@ -1,4 +1,4 @@
-package drajic;
+package drajic.drajic;
 import javax.swing.*;
 import java.awt.*;
 
@@ -151,7 +151,7 @@ public class Panel extends JPanel {
 
         JButton test4 = new JButton("Der letste Button in der letzten GridLayout-Zelle");
 
-
+        
         this.add(border);
         this.add(flow);
         this.add(box);

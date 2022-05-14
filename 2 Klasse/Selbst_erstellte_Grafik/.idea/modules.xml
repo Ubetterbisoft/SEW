@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Selbst_erstellte_Grafik.iml" filepath="$PROJECT_DIR$/.idea/Selbst_erstellte_Grafik.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Selbst_erstellte_Grafik.iml" filepath="$PROJECT_DIR$/Selbst_erstellte_Grafik.iml" />
     </modules>
   </component>
 </project>
