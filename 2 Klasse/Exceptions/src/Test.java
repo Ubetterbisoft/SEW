@@ -18,7 +18,7 @@ public class Test {
         // Es wird die setPreis Methode aus Produkt getestet
         try{
             Produkt stift = new Produkt(2345333342L, "Ein Blauer Stift" , "Dieser Stift ist serh robust und qualitativ hochwertig" , 3);
-            stift.setPreis(4);
+            stift.setPreis(-2);
         }catch(NumericRangeException e){
             e.printStackTrace();
         }

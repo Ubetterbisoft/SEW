@@ -7,6 +7,7 @@ public class ErweitertesProdukt extends Produkt{
         ||bezeichnung == null|| beschreibung == null || preis < 0.0 ||  rabatt < 0 || rabatt >100)){
             throw new NumericRangeException();
         }
+
         this.setPreis(preis);
         this.setBeschreibung(beschreibung);
         this.setBezeichnung(bezeichnung);
