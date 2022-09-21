@@ -4,8 +4,9 @@ public class WortListe {
 
 	private Worteintrag[] wortEinträge;
 
-	public WortListe(Worteintrag eintrag){
-		addWortEintrag(eintrag);
+	public WortListe(){
+
+		wortEinträge = new Worteintrag[1];
 	}
 
 	/**
@@ -17,22 +18,28 @@ public class WortListe {
 		if(newEintrag == null)
 			throw new IllegalArgumentException("Class WortListe  addWortEintrag: Kein Eintrag als Param");
 
-		//Damit man was reinspeichern kann muss man das array erweitern, weil es am anfang keinen einzigen platz gibt
-		if(wortEinträge == null){
-			this.wortEinträge = new Worteintrag[1];
-			this.wortEinträge[0] = newEintrag;
-			this.wortEinträge = Arrays.copyOf(this.wortEinträge,2);
-			return;
-		}
 
-		for(int i = 0; i < this.wortEinträge.length;i++){
-			if(this.wortEinträge[i] == null){
-				this.wortEinträge[i] = newEintrag;
+		/**
+		 * Geht die gesammte wortListe durch, wenn sie voll ist wird auserhalb der Schleife
+		 * das Array erweitert. Danach wird es ohne abfrage reingespeichert weil es 100% reinpasst
+		 */
+		int i = 0;
+		for(; i < wortEinträge.length;i++){
+			//Wenn eine stelle frei ist, speicher Eintrag rein
+			if(wortEinträge[i] == null) {
+				wortEinträge[i] = newEintrag;
 				return;
 			}
-
-
 		}
+
+		//mit i+1 erweitern, will ja eine stelle größer haben
+		wortEinträge = Arrays.copyOf(wortEinträge,i+1);
+		//nur [i] ansprechen index zählt ab 0
+		wortEinträge[i] = newEintrag;
+
+
+
+
 	}
 
 	public Worteintrag returnWortEintragElement(int stelleImArray) {
@@ -48,11 +55,53 @@ public class WortListe {
 	public boolean deleteElementByParam(String deletedWord) {
 		for(int i = 0; i < this.wortEinträge.length;i++){
 			if(wortEinträge[i].getWort().equals(deletedWord)){
-				wortEinträge[i].setWort("");
+				wortEinträge = removeTheElement(wortEinträge,i);
+
+
 				return true;
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * löscht eine Stelle aus der Wortliste
+	 * @param arr
+	 * @param index
+	 * @return
+	 */
+	public Worteintrag[] removeTheElement(Worteintrag[] arr, int index)
+	{
+
+		// If the array is empty
+		// or the index is not in array range
+		// return the original array
+		if (arr == null || index < 0
+				|| index >= arr.length) {
+
+			return arr;
+		}
+
+		// Create another array of size one less
+		Worteintrag[] anotherArray = new Worteintrag[arr.length - 1];
+
+		// Copy the elements except the index
+		// from original array to the other array
+		for (int i = 0, k = 0; i < arr.length; i++) {
+
+			// if the index is
+			// the removal element index
+			if (i == index) {
+				continue;
+			}
+
+			// if the index is not
+			// the removal element index
+			anotherArray[k++] = arr[i];
+		}
+
+		// return the resultant array
+		return anotherArray;
 	}
 
 	@Override
@@ -68,7 +117,7 @@ public class WortListe {
 	}
 
 	public Worteintrag[] getWorteinträge() {
-		return  null;
+		return  wortEinträge;
 	}
 
 }

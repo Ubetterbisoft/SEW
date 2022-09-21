@@ -4,8 +4,21 @@ public class WortTrainer {
 
 	private Worteintrag worteintrag;
 
-	public String randomWordSelection() {
-		return null;
+	public WortTrainer(){
+
+	}
+
+	public void setWortListe(WortListe wortListe) {
+		this.wortListe = wortListe;
+	}
+
+
+
+	public Worteintrag randomWordSelection() {
+		int wordlistlength = wortListe.getWorteinträge().length;
+		int random =  (int) Math.random() * (wordlistlength  +1);
+		return wortListe.getWorteinträge()[random];
+
 	}
 
 	public String returnRandomWord() {
