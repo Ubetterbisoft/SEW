@@ -1,3 +1,8 @@
+/**
+ * testet alle funktionen
+ * @author draji
+ * @version 2022.09.22
+ */
 public class test {
 
 	public static void main(String[] args) {
@@ -21,6 +26,11 @@ public class test {
 		WortTrainer wortTrainer = new WortTrainer();
 		wortTrainer.setWortListe(testWortListe);
 		System.out.println("Random: \n"+wortTrainer.randomWordSelection());
+		System.out.println("Random: \n"+wortTrainer.randomWordSelection());
+		System.out.println("RandomReturn:" + wortTrainer.returnRandomWord());
+		System.out.println("CheckAttribut:" + wortTrainer.check("Raajic"));
+
+		System.out.println("CheckIgnoreCase:" + wortTrainer.checkIgnoreCase("rajic"));
 
 
 	}

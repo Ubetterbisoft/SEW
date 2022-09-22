@@ -1,4 +1,10 @@
 import java.net.URL;
+
+/**
+ * Erstellt einen Worteintrag und bietet grundfunktionalitäten
+ * @author draji
+ * @version 2022.09.22
+ */
 public class Worteintrag {
 
 	private String wort;
@@ -15,15 +21,14 @@ public class Worteintrag {
 	}
 
 
-	//checkt die Url mit dem begin (https:// / http://) und nach den domains und subdomains
-
 	/**
-	 * Mann kann mit der URL Methode abchecken ob http enthalten ist.
-	 * Danach kann man in einer For-schleife zählen ob es noch einen punkt gibt
-	 * wenn es einen gibt kann man mit if ein true returnen
-	 * @param url
-	 * @return
+	 * checkt die Url mit dem begin (https:// / http://) und nach den domains und subdomains
+	 * @param url die übergebene Url als String
+	 * @return ob es übereinstimmt oder nicht
 	 */
+
+
+
 	public static boolean checkURL(String url) {
 		try{
 			new URL(url).toURI();
@@ -35,6 +40,10 @@ public class Worteintrag {
 		return true;
 	}
 
+	/**
+	 * Das wort wird nur gesetz wenn es länger als 2 Zeichen ist
+	 * @param wort das zu setzende Wort
+	 */
 	public void setWort(String wort) {
 		if(wort == null || wort.length() < 2){
 			throw new IllegalArgumentException("set Wort: wort passt nicht");
@@ -42,6 +51,10 @@ public class Worteintrag {
 		this.wort = wort;
 	}
 
+	/**
+	 * Die Url wird gesetz und auf gültigkeit überprüft
+	 * @param url
+	 */
 	public void setUrl(String url) {
 		if(url == null || this.checkURL(url) == false){
 			throw new IllegalArgumentException("Die Url entspricht nicht den Vorgaben");

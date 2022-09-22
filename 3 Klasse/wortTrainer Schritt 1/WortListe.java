@@ -1,5 +1,10 @@
 import java.util.Arrays;
 
+/**
+ * Erstellt eine wortliste und bietet grundlegende funktionalitäten
+ * @author draji
+ * @version 2022.09.22
+ */
 public class WortListe {
 
 	private Worteintrag[] wortEinträge;
@@ -11,7 +16,7 @@ public class WortListe {
 
 	/**
 	 *
-	 * FEhlerhaft, wie mach ich die länge des Arrays passend?
+	 * fügt ein Worteintrag zur Wortliste hinzu
 	 * @param newEintrag
 	 */
 	public void addWortEintrag(Worteintrag newEintrag) {
@@ -42,6 +47,11 @@ public class WortListe {
 
 	}
 
+	/**
+	 * ein ausgewähltes Element wird mittels dem index gezielt ausgegeben
+	 * @param stelleImArray der index
+	 * @return Worteintrag
+	 */
 	public Worteintrag returnWortEintragElement(int stelleImArray) {
 		if(stelleImArray > this.wortEinträge.length){
 			throw new IllegalArgumentException("Class Wortliste returnWortEintragElement: Die stelleImArray war größer als das array");
@@ -52,6 +62,11 @@ public class WortListe {
 		return wortEinträge[stelleImArray];
 	}
 
+	/**
+	 * Gezieltes Element wird gelöscht
+	 * @param deletedWord zu löschende wort
+	 * @return ob löschen erfolgreich war
+	 */
 	public boolean deleteElementByParam(String deletedWord) {
 		for(int i = 0; i < this.wortEinträge.length;i++){
 			if(wortEinträge[i].getWort().equals(deletedWord)){
@@ -70,37 +85,21 @@ public class WortListe {
 	 * @param index
 	 * @return
 	 */
-	public Worteintrag[] removeTheElement(Worteintrag[] arr, int index)
-	{
-
-		// If the array is empty
-		// or the index is not in array range
-		// return the original array
+	public Worteintrag[] removeTheElement(Worteintrag[] arr, int index) {
 		if (arr == null || index < 0
 				|| index >= arr.length) {
 
 			return arr;
 		}
 
-		// Create another array of size one less
+
 		Worteintrag[] anotherArray = new Worteintrag[arr.length - 1];
-
-		// Copy the elements except the index
-		// from original array to the other array
 		for (int i = 0, k = 0; i < arr.length; i++) {
-
-			// if the index is
-			// the removal element index
 			if (i == index) {
 				continue;
 			}
-
-			// if the index is not
-			// the removal element index
 			anotherArray[k++] = arr[i];
 		}
-
-		// return the resultant array
 		return anotherArray;
 	}
 
