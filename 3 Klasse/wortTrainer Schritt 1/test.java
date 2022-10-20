@@ -32,6 +32,11 @@ public class test {
 
 		System.out.println("CheckIgnoreCase:" + wortTrainer.checkIgnoreCase("rajic"));
 
+		System.out.println("#############################################################################");
+		wortTrainer.checkIgnoreCase("Dejan");
+		wortTrainer.check("Rajic");
+		wortTrainer.check("Rajic");
+		System.out.println(wortTrainer.statistik());
 
 	}
 

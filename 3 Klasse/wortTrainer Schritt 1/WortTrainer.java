@@ -4,8 +4,13 @@ public class WortTrainer {
 
 	private Worteintrag worteintrag;
 
-	public WortTrainer(){
+	private int abgefragteWorte;
 
+	private int richtigeWorte;
+
+	public WortTrainer(){
+		abgefragteWorte = 0;
+		richtigeWorte = 0;
 	}
 
 	public void setWortListe(WortListe wortListe) {
@@ -45,8 +50,11 @@ public class WortTrainer {
 	 */
 	public boolean check(String wort) {
 		if(wort.equals(this.worteintrag.getWort())){
+			this.richtigeWorte++;
+			this.abgefragteWorte++;
 			return true;
 		}
+		this.abgefragteWorte++;
 		return false;
 	}
 
@@ -59,9 +67,16 @@ public class WortTrainer {
 		String wortKlein = wort.toLowerCase();
 		String attributKlein = this.worteintrag.getWort().toLowerCase();
 		if(wortKlein.equals(attributKlein)){
+			this.richtigeWorte++;
+			this.abgefragteWorte++;
 			return true;
+
 		}
+		this.abgefragteWorte++;
 		return false;
+	}
+	public String statistik(){
+		return "Richtige Worte"+this.richtigeWorte + " Insgesammt abgefragte worte"+ this.abgefragteWorte;
 	}
 
 }
