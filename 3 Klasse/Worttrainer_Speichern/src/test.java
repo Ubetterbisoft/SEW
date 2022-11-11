@@ -1,3 +1,6 @@
+import javax.swing.JOptionPane;
+import java.io.IOException;
+
 /**
  * testet alle funktionen
  * @author draji
@@ -37,6 +40,39 @@ public class test {
         wortTrainer.check("Rajic");
         wortTrainer.check("Rajic");
         System.out.println(wortTrainer.statistik());
+
+        System.out.println("#################################################################################");
+
+        //Testen von Worttrainer Speichern funktionen
+
+        //Speicherfunktion mit parameter
+        Speichern save = new Speichern();
+        try {
+
+            save.speichern("C:\\Users\\draji\\Desktop\\Github\\SEW\\3 Klasse\\Worttrainer_Speichern\\save.txt", wortTrainer);
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null,"Fehler Beim Speichern mit Parameter");
+            e.printStackTrace();
+        }
+        //speicherfunktion ohne parameter (WorttrainerDefault.txt)
+        try{
+            save.speichern();
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null,"Fehler Beim Speichern ohne Parameter");
+            e.printStackTrace();
+        }
+        try {
+            //ladefunktion mir parametert
+            save.laden("C:\\Users\\draji\\Desktop\\Github\\SEW\\3 Klasse\\Worttrainer_Speichern\\save.txt");
+        }catch (IOException e){
+            JOptionPane.showMessageDialog(null,"Fehler Beim laden mit Parameter");
+        }
+        System.out.println("-----------------");
+        try{
+            save.laden();
+        }catch(IOException e){
+            JOptionPane.showMessageDialog(null,"Fehler Beim laden ohne Parameter");
+        }
 
     }
 

@@ -105,6 +105,9 @@ public class WortListe {
 
     @Override
     public String toString() {
+        if(wortEinträge == null){
+            return "Keine Wortliste vorhanden";
+        }
         String ausgabe ="";
         for(int i = 0; i < wortEinträge.length;i++){
             if(wortEinträge[i] != null){

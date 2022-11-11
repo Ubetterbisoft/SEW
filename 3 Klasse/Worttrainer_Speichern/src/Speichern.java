@@ -4,25 +4,37 @@ import java.io.IOException;
 public class Speichern {
 
 
-    public void speichernWortTrainer(String Pfad, WortTrainer wortTrainer) throws IOException {
-        File f = new File("saveWortTrainer");
-        FileWriter outputStream = null;
+    public void speichern(String Pfad, WortTrainer wortTrainer) throws IOException{
+       try{
+           BufferedWriter writer = new BufferedWriter(new FileWriter(Pfad));
+           writer.write("WortEinträge:\n");
+           writer.write(wortTrainer.getWortListe().toString());
+           writer.write("\nStatistik der Wörter:\n" + wortTrainer.statistik());
+           writer.close();
+       }catch(IOException e){
+           e.printStackTrace();
+       }
 
-        /**
-         * speichert die wortliste und statistik
-         */
+    }
+    public void speichern() throws  IOException{
+
+        WortTrainer wortTrainer = new WortTrainer();
+        speichern("C:\\Users\\draji\\Desktop\\Github\\SEW\\3 Klasse\\Worttrainer_Speichern\\WortTrainerDefault.txt",wortTrainer);
+    }
+
+    public void laden(String Pfad) throws  IOException{
         try{
-            outputStream = new FileWriter(f);
-            for(int i = 0; i < wortTrainer.getWortListe().getWorteinträge().length;i++){
-                outputStream.write(wortTrainer.getWortListe().toString());
-                outputStream.write(System.lineSeparator());
+            BufferedReader reader = new BufferedReader(new FileReader(Pfad));
+            String line;
+            while((line = reader.readLine()) != null){
+                System.out.println(line);
             }
-            outputStream.write(wortTrainer.statistik());
-            outputStream.write(System.lineSeparator());
-        }finally{
-            if(outputStream != null)
-                outputStream.close();
+            reader.close();
+        }catch (IOException e){
+            e.printStackTrace();
         }
-
+    }
+    public void laden()throws IOException{
+        laden("C:\\Users\\draji\\Desktop\\Github\\SEW\\3 Klasse\\Worttrainer_Speichern\\WortTrainerDefault.txt");
     }
 }

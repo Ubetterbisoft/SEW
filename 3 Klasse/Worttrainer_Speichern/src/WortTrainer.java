@@ -11,10 +11,15 @@ public class WortTrainer {
     public WortTrainer(){
         abgefragteWorte = 0;
         richtigeWorte = 0;
+        wortListe = new WortListe();
+        Worteintrag katze = new Worteintrag("Katze","Katze.png");
+        worteintrag = katze;
+        wortListe.addWortEintrag(katze);
+
     }
 
     public WortListe getWortListe() {
-        return wortListe;
+            return wortListe;
     }
 
     public void setWortListe(WortListe wortListe) {
@@ -80,6 +85,7 @@ public class WortTrainer {
         return false;
     }
     public String statistik(){
+
         return "Richtige Worte"+this.richtigeWorte + " Insgesammt abgefragte worte"+ this.abgefragteWorte;
     }
 
