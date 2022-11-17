@@ -3,4 +3,4 @@ Wort:Rajic; URL:  https://dejan.com
  Wort:Timo; URL:  https://Timo.com 
  
 Statistik der Wörter:
-Richtige Worte0 Insgesammt abgefragte worte5
+Richtige Worte3 Insgesammt abgefragte worte5

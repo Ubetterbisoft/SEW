@@ -49,7 +49,7 @@ public class test {
         Speichern save = new Speichern();
         try {
 
-            save.speichern("C:\\Users\\draji\\Desktop\\Github\\SEW\\3 Klasse\\Worttrainer_Speichern\\save.txt", wortTrainer);
+            save.speichern("save.txt", wortTrainer);
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Fehler Beim Speichern mit Parameter");
             e.printStackTrace();
@@ -63,7 +63,7 @@ public class test {
         }
         try {
             //ladefunktion mir parametert
-            save.laden("C:\\Users\\draji\\Desktop\\Github\\SEW\\3 Klasse\\Worttrainer_Speichern\\save.txt");
+            save.laden("save.txt");
         }catch (IOException e){
             JOptionPane.showMessageDialog(null,"Fehler Beim laden mit Parameter");
         }
@@ -73,6 +73,7 @@ public class test {
         }catch(IOException e){
             JOptionPane.showMessageDialog(null,"Fehler Beim laden ohne Parameter");
         }
+
 
     }
 
