@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
         Auto[] auto = new Auto[5];
@@ -25,6 +27,14 @@ public class Main {
         System.out.println(auto[1].flex());
         Auto auto1 = new Mercedes("Mercedes c180");
         System.out.println(auto1.toString());
+
+        //Testen der Speichern Laden Methoden
+
+        try {
+            auto[0].speichern();
+        } catch (IOException e) {
+            System.err.println("Ein Fehler beim Speichern Aufgetreten");
+        }
 
     }
 }
