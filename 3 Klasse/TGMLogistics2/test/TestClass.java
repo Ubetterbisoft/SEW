@@ -10,6 +10,7 @@ import TGMLogistics.User.UserPrivilege;
 import static org.junit.jupiter.api.Assertions.*;
 public class TestClass {
     private User user;
+
     @BeforeEach
     void setup(){
         Address address = new Address("Musterstrasse",1,"Wien","Austria",1010);
@@ -23,6 +24,7 @@ public class TestClass {
         } catch (PasswordTooWeakException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @DisplayName("Ein Benutzer wird korrekt angelegt")
@@ -32,7 +34,7 @@ public class TestClass {
         assertEquals("Musterstrasse",user.getUserAddress().getStreetName(),"Straßenname Falsch in address");
         //Das muss für alle attribute wiederholt werden um sie zu vergleichen
 
-        //Überprüfung der Adressdaten
+        //Überprüfung der A
         assertEquals(1,user.getUserAddress().getStreetNumber(),"Falsche Hausnummer in address");
         assertEquals("Wien",user.getUserAddress().getCity(),"Falsche Stadt in address");
         assertEquals("Austria",user.getUserAddress().getState(),"Falsches Land in address");
@@ -45,4 +47,13 @@ public class TestClass {
 
 
     }
+
+
+    @DisplayName("Kein Benutzer wird angelegt, wenn die Tel.Nr nicht korrekt ist")
+    @Test
+    void test2(){
+        assertThrows(NoValidPhoneNumberException.class,()->user.setPhone("01234ABC123"),"Test2: Telefonnummer nicht laut Validation");
+    }
+
+
 }
