@@ -22,6 +22,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestClass {
     private User user;
     private User user2;
+    private User user3;
+    private Shirt shirt1;
+    private Shirt shirt2;
+    private Shirt shirt3;
+    private Order order1;
+    private Order order2;
+    private Order order3;
     @BeforeEach
     void setup(){
         Address address = new Address("Musterstrasse",1,"Wien","Austria",1010);
@@ -44,8 +51,31 @@ public class TestClass {
         } catch (PasswordTooWeakException e) {
             throw new RuntimeException(e);
         }
+        try {
+            this.user3 = new User(UserPrivilege.COWORKER,"Dejan","Rajic","6601996127","drajic@student.tgm.ac.at","Dejan123",new Address("DejanStreet",5,"Wien","Austria",1160));
+        } catch (NoValidEmailException e) {
+            throw new RuntimeException(e);
+        } catch (NoValidPhoneNumberException e) {
+            throw new RuntimeException(e);
+        } catch (PasswordTooWeakException e) {
+            throw new RuntimeException(e);
+        }
+        this.shirt1 = new Shirt("Dejan's slogan",ClothingSize.L);
+        this.shirt2 = new Shirt("TGM's slogan",ClothingSize.M);
+        this.shirt3 = new Shirt("Dritter slogan",ClothingSize.S);
 
+        //Orders
+        this.order1 = new Order(this.user2);
+        order1.addItemToOrder(this.shirt1);
+        order1.addItemToOrder(this.shirt2);
 
+        this.order2 = new Order (user2);
+        order2.addItemToOrder(this.shirt1);
+        order2.addItemToOrder(this.shirt3);
+
+        this.order3 = new Order (user2);
+        order2.addItemToOrder(this.shirt1);
+        order2.addItemToOrder(this.shirt3);
     }
 
     @DisplayName("Ein Benutzer wird korrekt angelegt")
@@ -122,22 +152,12 @@ public class TestClass {
     @Test
     void test7(){
         Store store = new Store(new Address("Street",11,"Wien","Austria",1160));
-        Shirt shirt1 = new Shirt("Dejan's slogan",ClothingSize.L);
-        Shirt shirt2 = new Shirt("TGM's slogan",ClothingSize.M);
-        Shirt shirt3 = new Shirt("Dritter slogan",ClothingSize.S);
-        store.addShirt(shirt1);
-        store.addShirt(shirt2);
 
-        Order order1 = new Order(user2);
-        order1.addItemToOrder(shirt1);
-        order1.addItemToOrder(shirt2);
-
-        Order order2 = new Order (user2);
-        order2.addItemToOrder(shirt1);
-        order2.addItemToOrder(shirt3);
+        store.addShirt(this.shirt1);
+        store.addShirt(this.shirt2);
 
         LogisticsSystem system = new LogisticsSystem();
-        system.registerNewUser(user2);
+        system.registerNewUser(this.user2);
         system.registerNewStore(store);
         assertDoesNotThrow(()->system.processOrders(),"Störung bei den Orders im LogistikSystem");
 
@@ -146,7 +166,20 @@ public class TestClass {
 
     }
 
+    @DisplayName("Bestellungen sind nur von authorisierten NutzerInnen löschbar")
+    @Test
+    void test8(){
+        LogisticsSystem system = new LogisticsSystem();
+        system.addOrder(order1);
+        system.addOrder(order2);
 
+        assertDoesNotThrow(()->system.removeOrder(order2,this.user,"XA#*<TGM>b34y"),"beim removen wurde eine Exception geworfen");
+        assertThrows(OperationNotAllowedException.class,()-> system.removeOrder(order1,user,"123FalsePW"),"Bei Falschen Admin PW, aktion trotzdem bewilligt");
+        assertThrows(OperationNotAllowedException.class,()-> system.removeOrder(order3,user3,"123FalsePW"),"Bei Falscher Authorisation(Coworker),aktion trotzdem bewilligt");
+
+
+
+    }
 
 
 
