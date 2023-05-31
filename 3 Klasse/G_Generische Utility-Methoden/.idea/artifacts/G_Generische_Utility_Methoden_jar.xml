@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="G_Generische Utility-Methoden:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/G_Generische_Utility_Methoden_jar</output-path>
+    <root id="archive" name="G_Generische Utility-Methoden.jar">
+      <element id="module-output" name="G_Generische Utility-Methoden" />
+    </root>
+  </artifact>
+</component>
