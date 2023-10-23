@@ -2,6 +2,11 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Dieses Programm erhält einen Pfad als parameter und iteriert durch den Ordner und gibt alle elemente samt unterordner an
+ * @author Dejan Rajic
+ * @version 14.06.2023
+ */
 public class OrdnerAuflistung {
     public static String listFile(File file, int depth){
         String output = "";
